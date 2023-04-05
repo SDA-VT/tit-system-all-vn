@@ -5,6 +5,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import PageExport from "./pageExport";
+import Stack from "@mui/material/Stack";
+
 type Props = { handleToPageExport: any };
 
 const websystem = (props: Props) => {
@@ -15,24 +17,45 @@ const websystem = (props: Props) => {
       <Typography gutterBottom variant="h3" align="center">
         All System
       </Typography>
-      <Card sx={{ maxWidth: 345 }} onClick={handleToPageExport}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            height="140"
-            image="/Logo.png"
-            alt="green iguana"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Export W/O history
-            </Typography>
-            {/* <Typography variant="body2" color="text.secondary">
+      <Stack direction="row" spacing={10}>
+        <Card sx={{ width: 345 }} onClick={handleToPageExport}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="140"
+              image="/Logo.png"
+              alt="green iguana"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Export W/O history
+              </Typography>
+              {/* <Typography variant="body2" color="text.secondary">
               test
             </Typography> */}
-          </CardContent>
-        </CardActionArea>
-      </Card>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+
+        <Card sx={{ width: 345 }} onClick={handleToPageExport}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="140"
+              image="/Logo.png"
+              alt="green iguana"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                DashBoard Production Monitoring
+              </Typography>
+              {/* <Typography variant="body2" color="text.secondary">
+              test
+            </Typography> */}
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      </Stack>
     </div>
   );
 };

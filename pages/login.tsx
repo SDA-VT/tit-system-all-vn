@@ -81,6 +81,9 @@ export default function Login() {
         if (data[0].level === "Manager") {
           router.push("/homes");
         }
+        if (data[0].level === "Supervisor") {
+          router.push("/homes");
+        }
         if (data[0].level === "Leader") {
           router.push("/homes");
         }

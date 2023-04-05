@@ -28,6 +28,7 @@ import supabase from "@/compoment Config/supabase";
 import Websystem from "./compoment/websystem";
 import PageExport from "./compoment/pageExport";
 import Head from "next/head";
+import PageDashboard from "./compoment/pageDashboard";
 
 const drawerWidth = 240;
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
