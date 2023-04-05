@@ -11,8 +11,7 @@ const pageExport = (props: Props) => {
         url="https://tit-export-history-wo.vercel.app/"
         width="100%"
         height="850"
-        id=""
-        className=""
+        className="frame"
       />
     </Box>
   );
