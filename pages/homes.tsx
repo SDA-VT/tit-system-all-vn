@@ -149,10 +149,7 @@ export default function DrawerHome() {
   };
   //set หน้าแรก จากปุ่มกด
   const [dataShowPage, setDataShowPage] = useState<any>(
-    <Websystem
-      handleToPageExport={handleToPageExport}
-      handleToPageDashboard={handleToPageDashboard}
-    />
+    <Websystem handleToPageExport={handleToPageExport} />
   );
   const [idcheck, setIDchoeck] = useState<any>();
 
@@ -318,10 +315,7 @@ export default function DrawerHome() {
               <ListItemButton
                 onClick={(e) =>
                   setDataShowPage(
-                    <Websystem
-                      handleToPageExport={handleToPageExport}
-                      handleToPageDashboard={handleToPageDashboard}
-                    />
+                    <Websystem handleToPageExport={handleToPageExport} />
                   )
                 }
               >
