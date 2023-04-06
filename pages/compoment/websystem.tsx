@@ -7,10 +7,10 @@ import { CardActionArea } from "@mui/material";
 import PageExport from "./pageExport";
 import Stack from "@mui/material/Stack";
 
-type Props = { handleToPageExport: any };
+type Props = { handleToPageExport: any; handleToPageDashboard: any };
 
 const websystem = (props: Props) => {
-  const { handleToPageExport } = props;
+  const { handleToPageExport, handleToPageDashboard } = props;
 
   return (
     <div>
@@ -37,7 +37,7 @@ const websystem = (props: Props) => {
           </CardActionArea>
         </Card>
 
-        <Card sx={{ width: 345 }} onClick={handleToPageExport}>
+        <Card sx={{ width: 345 }} onClick={handleToPageDashboard}>
           <CardActionArea>
             <CardMedia
               component="img"
