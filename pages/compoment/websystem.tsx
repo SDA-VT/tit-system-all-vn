@@ -7,10 +7,10 @@ import { CardActionArea } from "@mui/material";
 import PageExport from "./pageExport";
 import Stack from "@mui/material/Stack";
 
-type Props = { handleToPageExport: any };
+type Props = { handleToPageExport: any; handleToPageDashboard: any };
 
 const websystem = (props: Props) => {
-  const { handleToPageExport } = props;
+  const { handleToPageExport, handleToPageDashboard } = props;
 
   return (
     <div>
@@ -21,10 +21,10 @@ const websystem = (props: Props) => {
         <Card sx={{ width: 345 }} onClick={handleToPageExport}>
           <CardActionArea>
             <CardMedia
-              component="img"
-              height="140"
-              image="/Logo.png"
-              alt="green iguana"
+              className="frame"
+              component="iframe"
+              height="200"
+              src="https://tit-export-history-wo.vercel.app"
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
@@ -37,13 +37,13 @@ const websystem = (props: Props) => {
           </CardActionArea>
         </Card>
 
-        <Card sx={{ width: 345 }} onClick={handleToPageExport}>
+        <Card sx={{ width: 345 }} onClick={handleToPageDashboard}>
           <CardActionArea>
             <CardMedia
-              component="img"
-              height="140"
-              image="/Logo.png"
-              alt="green iguana"
+              className="frame"
+              component="iframe"
+              height="200"
+              src="https://dashboard-tit-line.vercel.app"
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
