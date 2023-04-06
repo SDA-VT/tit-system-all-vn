@@ -29,6 +29,7 @@ import Websystem from "./compoment/websystem";
 import PageExport from "./compoment/pageExport";
 import Head from "next/head";
 import PageDashboard from "./compoment/pageDashboard";
+import PageExportDowntime from "./compoment/pageExportDowntime";
 
 const drawerWidth = 240;
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
@@ -141,17 +142,25 @@ export default function DrawerHome() {
       alert("Please push STOP button before proceed  Logout !");
     }
   };
+  //=========props function ======================/
   const handleToPageExport = () => {
     setDataShowPage(<PageExport />);
   };
   const handleToPageDashboard = () => {
     setDataShowPage(<PageDashboard />);
   };
+  const handleToPageExportDowntime = () => {
+    setDataShowPage(<PageExportDowntime />);
+  };
+
+  //==================end props function ===============./
+
   //set หน้าแรก จากปุ่มกด
   const [dataShowPage, setDataShowPage] = useState<any>(
     <Websystem
       handleToPageExport={handleToPageExport}
       handleToPageDashboard={handleToPageDashboard}
+      handleToPageExportDowntime={handleToPageExportDowntime}
     />
   );
   const [idcheck, setIDchoeck] = useState<any>();
@@ -321,6 +330,7 @@ export default function DrawerHome() {
                     <Websystem
                       handleToPageExport={handleToPageExport}
                       handleToPageDashboard={handleToPageDashboard}
+                      handleToPageExportDowntime={handleToPageExportDowntime}
                     />
                   )
                 }
