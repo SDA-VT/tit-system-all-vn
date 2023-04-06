@@ -26,7 +26,7 @@ const websystem = (props: Props) => {
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2}>
+        <Grid container spacing={5}>
           <Grid item xs={12}>
             <Typography gutterBottom variant="h3" align="center">
               All System
