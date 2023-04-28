@@ -30,6 +30,7 @@ import PageExport from "./compoment/pageExport";
 import Head from "next/head";
 import PageDashboard from "./compoment/pageDashboard";
 import PageExportDowntime from "./compoment/pageExportDowntime";
+import * as XLSX from "xlsx";
 
 const drawerWidth = 240;
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
@@ -152,6 +153,21 @@ export default function DrawerHome() {
   const handleToPageExportDowntime = () => {
     setDataShowPage(<PageExportDowntime />);
   };
+  const handleExportLabelReport = async () => {
+    let { data: Labor_IO_report, error } = await supabase
+      .from("Labor_IO_report")
+      .select(
+        "no,date_begine,date_end,good_run_labor,all_run_labor,inline_labor,downtime_inline,total_inline,outline_labor,downtime_outline,total_outline,total_sdas,total_run_percent,good_run_percent,inline_percent,total_actual_percent"
+      );
+    if (Labor_IO_report) {
+      let wb: any = XLSX.utils.book_new();
+      const ws: any = XLSX.utils.json_to_sheet(Labor_IO_report);
+      XLSX.utils.book_append_sheet(wb, ws, "MySheet1");
+      XLSX.writeFile(wb, "labor_Report.xlsx");
+    } else {
+      console.log("Export File false :(", error);
+    }
+  };
 
   //==================end props function ===============./
 
@@ -161,6 +177,7 @@ export default function DrawerHome() {
       handleToPageExport={handleToPageExport}
       handleToPageDashboard={handleToPageDashboard}
       handleToPageExportDowntime={handleToPageExportDowntime}
+      handleExportLabelReport={handleExportLabelReport}
     />
   );
   const [idcheck, setIDchoeck] = useState<any>();
@@ -331,6 +348,7 @@ export default function DrawerHome() {
                       handleToPageExport={handleToPageExport}
                       handleToPageDashboard={handleToPageDashboard}
                       handleToPageExportDowntime={handleToPageExportDowntime}
+                      handleExportLabelReport={handleExportLabelReport}
                     />
                   )
                 }
