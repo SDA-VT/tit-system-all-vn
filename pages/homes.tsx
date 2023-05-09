@@ -153,12 +153,11 @@ export default function DrawerHome() {
   const handleToPageExportDowntime = () => {
     setDataShowPage(<PageExportDowntime />);
   };
+  //  "no,date_begine,date_end,good_run_labor,all_run_labor,inline_labor,downtime_inline,total_inline,outline_labor,downtime_outline,total_outline,total_sdas,total_run_percent,good_run_percent,inline_percent,total_actual_percent"
   const handleExportLabelReport = async () => {
     let { data: Labor_IO_report, error } = await supabase
       .from("Labor_IO_report")
-      .select(
-        "no,date_begine,date_end,good_run_labor,all_run_labor,inline_labor,downtime_inline,total_inline,outline_labor,downtime_outline,total_outline,total_sdas,total_run_percent,good_run_percent,inline_percent,total_actual_percent"
-      );
+      .select("*");
     if (Labor_IO_report) {
       let wb: any = XLSX.utils.book_new();
       const ws: any = XLSX.utils.json_to_sheet(Labor_IO_report);
