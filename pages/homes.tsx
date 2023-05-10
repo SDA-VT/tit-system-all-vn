@@ -157,7 +157,9 @@ export default function DrawerHome() {
   const handleExportLabelReport = async () => {
     let { data: Labor_IO_report, error } = await supabase
       .from("Labor_IO_report")
-      .select("*");
+      .select("*")
+      .order("date_end", { ascending: true });
+
     if (Labor_IO_report) {
       let wb: any = XLSX.utils.book_new();
       const ws: any = XLSX.utils.json_to_sheet(Labor_IO_report);
