@@ -30,6 +30,7 @@ import PageExport from "./compoment/pageExport";
 import Head from "next/head";
 import PageDashboard from "./compoment/pageDashboard";
 import PageExportDowntime from "./compoment/pageExportDowntime";
+import PageExportNG from "./compoment/pageExportNG";
 import * as XLSX from "xlsx";
 
 const drawerWidth = 240;
@@ -153,6 +154,11 @@ export default function DrawerHome() {
   const handleToPageExportDowntime = () => {
     setDataShowPage(<PageExportDowntime />);
   };
+
+  const handleToPageExportNG = () => {
+    setDataShowPage(<PageExportNG />);
+  };
+
   //  "no,date_begine,date_end,good_run_labor,all_run_labor,inline_labor,downtime_inline,total_inline,outline_labor,downtime_outline,total_outline,total_sdas,total_run_percent,good_run_percent,inline_percent,total_actual_percent"
   const handleExportLabelReport = async () => {
     let { data: Labor_IO_report, error } = await supabase
@@ -179,6 +185,7 @@ export default function DrawerHome() {
       handleToPageDashboard={handleToPageDashboard}
       handleToPageExportDowntime={handleToPageExportDowntime}
       handleExportLabelReport={handleExportLabelReport}
+      handleToPageExportNG={handleToPageExportNG}
     />
   );
   const [idcheck, setIDchoeck] = useState<any>();
@@ -350,6 +357,7 @@ export default function DrawerHome() {
                       handleToPageDashboard={handleToPageDashboard}
                       handleToPageExportDowntime={handleToPageExportDowntime}
                       handleExportLabelReport={handleExportLabelReport}
+                      handleToPageExportNG={handleToPageExportNG}
                     />
                   )
                 }

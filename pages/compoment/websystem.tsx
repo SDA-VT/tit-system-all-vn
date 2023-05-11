@@ -15,6 +15,7 @@ type Props = {
   handleToPageDashboard: any;
   handleToPageExportDowntime: any;
   handleExportLabelReport: any;
+  handleToPageExportNG: any;
 };
 
 const websystem = (props: Props) => {
@@ -23,6 +24,7 @@ const websystem = (props: Props) => {
     handleToPageDashboard,
     handleToPageExportDowntime,
     handleExportLabelReport,
+    handleToPageExportNG,
   } = props;
 
   return (
@@ -148,6 +150,37 @@ const websystem = (props: Props) => {
               </CardActionArea>
             </Card>
           </Grid>
+          {/* ======================================================== */}
+          <Grid item xs={6} lg={3}>
+            <Card
+              sx={{ width: "100%", height: "100%", p: 1 }}
+              onClick={handleToPageExportNG}
+            >
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="200"
+                  image="/Export_ng.jpg"
+                  alt="green iguana"
+                />
+                <CardContent>
+                  <Typography
+                    color="text.secondary"
+                    gutterBottom
+                    variant="h5"
+                    component="div"
+                  >
+                    Export W/O NG Record
+                  </Typography>
+                  {/* <Typography variant="body2" color="text.secondary">
+              test
+            </Typography> */}
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+
+          {/* ===================dasd========================== */}
         </Grid>
       </Box>
     </div>
