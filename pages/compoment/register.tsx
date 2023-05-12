@@ -38,6 +38,8 @@ const register1 = () => {
         department: dataDepartment,
         pass: pass1,
         level: level1,
+        section: dataSection,
+        emp_group: emp_group,
       },
     ]);
     if (error) {
@@ -88,7 +90,12 @@ const register1 = () => {
   const dataDepartment: string =
     dataUser.filter((respon1: any) => respon1.emp_no == user1)[0]?.department ||
     "";
-
+  const dataSection: string =
+    dataUser.filter((respon1: any) => respon1.emp_no == user1)[0]?.section ||
+    "";
+  const emp_group: string =
+    dataUser.filter((respon1: any) => respon1.emp_no == user1)[0]?.emp_group ||
+    "";
   //ทำเช็ค useEffect ทำงานระหว่าง cliant กับ server **ต้องทำความเข้าใจ useEffect เพิ่มเติม
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
