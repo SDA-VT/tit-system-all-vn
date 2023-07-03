@@ -227,9 +227,10 @@ export default function DrawerHome() {
                 component="div"
                 sx={{ flexGrow: 1 }}
               >
-                TIT System All
+                TIT System All Vietnam
               </Typography>
-              {localStorage.getItem("userName")}
+              {localStorage.getItem("Fname")} &nbsp;
+              {localStorage.getItem("Lname")}
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -256,8 +257,9 @@ export default function DrawerHome() {
                 onClose={handleClose}
               >
                 <MenuItem>
-                  {"Name"} : {localStorage.getItem("userName")} &nbsp; {"Level"}
-                  : {localStorage.getItem("Level")}
+                  {"Name"} : {localStorage.getItem("Fname")}&nbsp;
+                  {localStorage.getItem("Lname")}
+                  &nbsp; {"Level"}: {localStorage.getItem("Level")}
                 </MenuItem>
                 <MenuItem onClick={handleLogout}>{"Logout"}</MenuItem>
               </Menu>

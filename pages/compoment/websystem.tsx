@@ -45,7 +45,7 @@ const websystem = (props: Props) => {
                 <CardMedia
                   component="img"
                   height="200"
-                  image="/Logo.png"
+                  image="/history.jpg"
                   alt="green iguana"
                 />
                 <CardContent>
@@ -73,7 +73,7 @@ const websystem = (props: Props) => {
                 <CardMedia
                   component="img"
                   height="200"
-                  image="/Logo.png"
+                  image="/Downtime.jpg"
                   alt="green iguana"
                 />
                 <CardContent>
@@ -121,35 +121,6 @@ const websystem = (props: Props) => {
             </Card>
           </Grid>
 
-          {/* ===================dasd========================== */}
-          <Grid item xs={6} lg={3}>
-            <Card
-              sx={{ width: "100%", height: "100%", p: 1 }}
-              onClick={handleExportLabelReport}
-            >
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image="/Logo.png"
-                  alt="green iguana"
-                />
-                <CardContent>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    color="text.secondary"
-                    component="div"
-                  >
-                    Export Labor I/O report
-                  </Typography>
-                  {/* <Typography variant="body2" color="text.secondary">
-              test
-            </Typography> */}
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
           {/* ======================================================== */}
           <Grid item xs={6} lg={3}>
             <Card

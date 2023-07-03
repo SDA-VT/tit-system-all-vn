@@ -8,7 +8,7 @@ const pageDashboard = (props: Props) => {
   return (
     <Box display="flow">
       <Iframe
-        url="https://dashboard-tit-line.vercel.app/"
+        url="https://tyc-dashboard-vn.vercel.app/"
         width="100%"
         height="850"
         className="frame"

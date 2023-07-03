@@ -8,7 +8,7 @@ const pageExport = (props: Props) => {
   return (
     <Box display="flow">
       <Iframe
-        url="https://tit-export-ng.vercel.app/"
+        url="https://tit-export-ng-record-vn.vercel.app/"
         width="100%"
         height="850"
         className="frame"
