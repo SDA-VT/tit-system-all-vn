@@ -67,7 +67,7 @@ const register1 = () => {
   // console.log(user1);
   console.log("dataAll", user1, dataFname, dataLname, dataDepartment);
 
-  //ทำเช็ค useEffect ทำงานระหว่าง cliant กับ server **ต้องทำความเข้าใจ useEffect เพิ่มเติม----
+  //ทำเช็ค useEffect ทำงานระหว่าง cliant กับ server **ต้องทำความเข้าใจ useEffect เพิ่มเติม------
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
