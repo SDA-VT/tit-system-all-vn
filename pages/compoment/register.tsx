@@ -14,37 +14,45 @@ import supabase from "../../compoment Config/supabase";
 import Select from "@mui/material/Select";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import axios from "axios";
+
+const bcrypt = require("bcryptjs");
 
 const theme = createTheme();
 
 const register1 = () => {
-  const [pass1, setPass] = useState("");
+  // const { t, i18n } = useTranslation(); //language
+  const [pass1, setPass] = useState<any>("");
+  const [pass2, setPas2] = useState<any>("");
+  console.log("pass2", pass2);
+  const [dataFname, setDataFname] = useState<string>("");
+  const [dataLname, setDataLname] = useState<string>("");
+  const [dataDepartment, setDataDepartment] = useState<string>("");
 
-  const [level1, setLevel] = useState("");
+  const [user1, setUser1] = useState<any>("");
+
+  const [level1, setLevel] = useState<any>("");
   const [formError, setFromError] = useState<any>(null);
   const router = useRouter();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!user1 || !pass1 || !level1) {
-      setFromError(alert("กรุณากรอกข้อมูลให้ครบ"));
+    if (!user1 || !dataFname || !dataLname || !pass1 || !level1) {
+      setFromError("กรุณากรอกข้อมูลให้ครบ");
       return;
     }
     const { data, error } = await supabase.from("userID").insert([
       {
         emp_no: user1,
-        emp_name: dataName,
+        emp_Fname: dataFname,
+        emp_Lname: dataLname,
         department: dataDepartment,
-        pass: pass1,
+        pass: pass2,
         level: level1,
-        section: dataSection,
-        emp_group: emp_group,
       },
     ]);
     if (error) {
       console.log(error);
-      setFromError("กรอกข้อมูลให้ครบด้วยครับ");
+      setFromError("กรอกข้อมูลให้ครบด้วยครับ หรือ");
     }
     if (data) {
       console.log(data);
@@ -52,50 +60,13 @@ const register1 = () => {
       setFromError(null);
     }
     alert("Register Success");
-    router.push("/homes");
+    // router.push("/");
+    location.reload();
   };
 
-  useEffect(() => {
-    const FetchData = async () => {
-      let headersList = {
-        Authorization:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZkdWRsd3FzcnVjb2p4anBxaHZxIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY2ODc2MDU2NSwiZXhwIjoxOTg0MzM2NTY1fQ.-Z5955b7zSmDnGV3n2y65qJDElz3zfdyxAVyffJIR7Q",
-        apikey:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZkdWRsd3FzcnVjb2p4anBxaHZxIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY2ODc2MDU2NSwiZXhwIjoxOTg0MzM2NTY1fQ.-Z5955b7zSmDnGV3n2y65qJDElz3zfdyxAVyffJIR7Q",
-      };
-
-      let reqOptions = {
-        url: "https://vdudlwqsrucojxjpqhvq.supabase.co/rest/v1/employee",
-        method: "GET",
-        headers: headersList,
-      };
-
-      let res = await axios.request(reqOptions);
-      if (res.data) {
-        console.log(res.data);
-        setDataUser(res.data);
-      }
-    };
-    FetchData();
-  }, []);
-  const [dataUser, setDataUser] = useState<any>([]);
-  // console.log("dataAll", dataUser);
-  const [user1, setUser1] = useState<any>("");
   // console.log(user1);
+  console.log("dataAll", user1, dataFname, dataLname, dataDepartment);
 
-  const dataName: string =
-    dataUser.filter((respon: any) => respon.emp_no == user1)[0]?.emp_name || "";
-  // console.log({ dataName });
-
-  const dataDepartment: string =
-    dataUser.filter((respon1: any) => respon1.emp_no == user1)[0]?.department ||
-    "";
-  const dataSection: string =
-    dataUser.filter((respon1: any) => respon1.emp_no == user1)[0]?.section ||
-    "";
-  const emp_group: string =
-    dataUser.filter((respon1: any) => respon1.emp_no == user1)[0]?.emp_group ||
-    "";
   //ทำเช็ค useEffect ทำงานระหว่าง cliant กับ server **ต้องทำความเข้าใจ useEffect เพิ่มเติม
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
@@ -119,7 +90,7 @@ const register1 = () => {
           >
             <Image src={"/Logo.png"} alt={""} width="450" height="250" />
 
-            <Typography variant="h4">Register</Typography>
+            <Typography variant="h4">{"Register"}</Typography>
 
             <Box
               component="form"
@@ -143,22 +114,33 @@ const register1 = () => {
                   <TextField
                     required
                     fullWidth
-                    disabled
-                    id="fullname"
-                    label="Full name"
-                    name="Fullname"
-                    value={dataName}
+                    id="Fname"
+                    label="First name"
+                    name="FirstName"
+                    value={dataFname}
+                    onChange={(e) => setDataFname(e.target.value)}
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
                     required
                     fullWidth
-                    disabled
+                    id="Lname"
+                    label="Last name"
+                    name="LastName"
+                    value={dataLname}
+                    onChange={(e) => setDataLname(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
                     id="department"
                     label="Department"
                     name="department"
                     value={dataDepartment}
+                    onChange={(e) => setDataDepartment(e.target.value)}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -167,11 +149,14 @@ const register1 = () => {
                     fullWidth
                     name="pass"
                     label="Password"
-                    type="pass"
+                    type="password"
                     id="pass"
                     autoComplete="new-password"
                     value={pass1}
-                    onChange={(event) => setPass(event.target.value)}
+                    onChange={(event) => {
+                      setPass(event.target.value);
+                      setPas2(bcrypt.hashSync(event.target.value, 10));
+                    }}
                   />
                 </Grid>
 
@@ -179,7 +164,6 @@ const register1 = () => {
                   <InputLabel>Level</InputLabel>
                   <Select
                     id="level"
-                    label="Level"
                     name="level"
                     type="level"
                     fullWidth
@@ -202,7 +186,7 @@ const register1 = () => {
                 Submit
               </Button>
 
-              <Link href="/homes">
+              <Link onClick={(e) => location.reload()}>
                 <Button
                   name="home"
                   fullWidth

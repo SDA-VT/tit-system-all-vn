@@ -202,7 +202,7 @@ export default function DrawerHome() {
   return (
     <div>
       <Head>
-        <title>TIT All System</title>
+        <title>TIT All System VN</title>
         <meta name="description" content="TIT All System" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/Logo.png" />

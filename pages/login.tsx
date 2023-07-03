@@ -22,8 +22,9 @@ import LanguageSharpIcon from "@mui/icons-material/LanguageSharp";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
-// import { useTranslation } from "react-i18next";
 
+// import { useTranslation } from "react-i18next";
+const bcrypt = require("bcryptjs");
 const theme = createTheme();
 
 export default function Login() {
@@ -54,24 +55,26 @@ export default function Login() {
       .from("userID")
       .select("*")
       .eq("emp_no", username)
-      .eq("pass", pass)
+      // .eq("pass", pass)
       .limit(1); //ใช้แทน single
     if (!error) {
+      const result = bcrypt.compareSync(pass, data[0].pass);
       // setData(data);
-      if (data.length > 0) {
+      if (data.length > 0 && result) {
         setData1(data[0]);
-        // appcontext.setAppstate(data[0]);
+
         // const token = jwt.sign(
         //   {
         //     id: data[0].id,
-        //     emp_no: data[0].username,
+        //     emp_no: data[0].emp_no,
         //     level: data[0].level,
         //   },
         //   secret
         // );
         localStorage.setItem("Language", languagesUP);
         // localStorage.setItem("token", token);
-        localStorage.setItem("userName", data[0].emp_name);
+        localStorage.setItem("Fname", data[0].emp_Fname);
+        localStorage.setItem("Lname", data[0].emp_Lname);
         localStorage.setItem("Level", data[0].level);
         localStorage.setItem("emp_no", data[0].emp_no);
 
@@ -81,21 +84,16 @@ export default function Login() {
         if (data[0].level === "Manager") {
           router.push("/homes");
         }
-        if (data[0].level === "Supervisor") {
-          router.push("/homes");
-        }
         if (data[0].level === "Leader") {
           router.push("/homes");
         }
         if (data[0].level === "Foreman") {
           router.push("/homes");
         }
+      } else {
+        console.log(error, "login false");
+        alert("login false !!! ");
       }
-      if (data.length === 0) {
-        alert("login false");
-      }
-    } else {
-      console.log(error);
     }
   };
 
