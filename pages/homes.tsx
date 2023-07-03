@@ -106,7 +106,7 @@ export default function DrawerHome() {
     fetchCheckID();
   }, []);
 
-  //   const appcontext: any = useContext(AppContext);
+  //   const appcontext: any = useContext(AppContext).....;
   // console.log(appcontext);
   //เช็ค state ถ้าไม่มีค่าให้ เด้นกลับมาไปหน้า login**
 
