@@ -41,7 +41,7 @@ export default function Login() {
   const secret = "marko-login-tit-all";
   const [username, setUsername] = useState("");
   const [pass, setPass] = useState("");
-  console.log(username, pass);
+  // console.log(username, pass);
   // โชรข้อมูลตอนแสดงพิม
 
   const router = useRouter();

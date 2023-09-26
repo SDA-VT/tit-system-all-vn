@@ -23,7 +23,7 @@ const register1 = () => {
   // const { t, i18n } = useTranslation(); //language
   const [pass1, setPass] = useState<any>("");
   const [pass2, setPas2] = useState<any>("");
-  console.log("pass2", pass2);
+  // console.log("pass2", pass2);
   const [dataFname, setDataFname] = useState<string>("");
   const [dataLname, setDataLname] = useState<string>("");
   const [dataDepartment, setDataDepartment] = useState<string>("");
@@ -65,7 +65,7 @@ const register1 = () => {
   };
 
   // console.log(user1);
-  console.log("dataAll", user1, dataFname, dataLname, dataDepartment);
+  // console.log("dataAll", user1, dataFname, dataLname, dataDepartment);
 
   //ทำเช็ค useEffect ทำงานระหว่าง cliant กับ server **ต้องทำความเข้าใจ useEffect เพิ่มเติม------
   const [mounted, setMounted] = useState(false);
